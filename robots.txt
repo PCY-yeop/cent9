@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cent9.vercel.app/sitemap.xml
+Sitemap: https://센트나인등촌역-총괄본부.kr/sitemap.xml
