@@ -95,6 +95,8 @@ body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-s
   font-weight:700;
 }
 
+.card-bottom .phone-cta::before{display:none} /* 메인홈페이지 버튼엔 파란 효과 없음 */
+
 .card-bottom a{
   display:block;
   color:#fff;
