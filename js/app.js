@@ -36,52 +36,10 @@ document.addEventListener('click', (e) => {
 });
 
 // ---------------------------
-// 스크롤 리빌 (중복 제거: 이거 하나만 사용)
-// ---------------------------
-(function(){
-  const items = document.querySelectorAll('[data-reveal], .panel'); // ✅ panel까지 포함
-  if (!('IntersectionObserver' in window) || items.length === 0){
-    items.forEach(el => el.classList.add('is-revealed'));
-    return;
-  }
-
-  const revealIO = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
-      const once = el.hasAttribute('data-reveal-once');
-
-      if (entry.isIntersecting) {
-        if (el._leaveTimer){ clearTimeout(el._leaveTimer); el._leaveTimer = null; }
-
-        const baseDelay = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
-        el.style.transitionDelay = (baseDelay/1000) + 's';
-        el.classList.add('is-revealed');
-
-        if (once) revealIO.unobserve(el);
-      } else {
-        if (!once){
-          el._leaveTimer = setTimeout(() => {
-            el.classList.remove('is-revealed');
-            el.style.transitionDelay = '';
-          }, 150);
-        }
-      }
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -12% 0px',
-    threshold: 0.12
-  });
-
-  items.forEach(el => revealIO.observe(el));
-})();
-
-
-// ---------------------------
 // 폼
 // ---------------------------
 const MODE        = "phone";
-const SITE_NAME   = "여의대방";
+const SITE_NAME   = "센트나인";
 const API_BASE    = "https://solapi-backend.onrender.com";
 const ADMIN_PHONE = "01022844859";
 

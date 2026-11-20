@@ -20,8 +20,7 @@ body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-s
 .right{width:var(--rightw)}
 
 /* 좌측 카드 */
-.card{background:#fff;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.07);overflow:hidden;transform:translateY(8px);opacity:0;transition:opacity .5s ease, transform .5s ease}
-.card.revealed{opacity:1;transform:translateY(0)}
+.card{background:#fff;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.07);overflow:hidden}
 .card-top{position:relative;height:170px;background:linear-gradient(135deg,#c7ccd1,#b0b8c2)}
 .cover{position:absolute;inset:0; background-image: url('../img/visual-bg-01.jpg'); background-size: cover; background-position: center;}
 
@@ -48,6 +47,7 @@ body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-s
   color: #0f172a;
   text-decoration: none;
   overflow: hidden;
+  isolation: isolate; /* 배경이 카드 뒤로 숨지 않게 */
 }
 
 .phone-cta::before {
@@ -113,8 +113,7 @@ body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-s
 .btn.call{background:#8a6e4b}
 
 /* 패널 */
-.panel{background:#fff;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.07);margin-bottom:20px;opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
-.panel.revealed{opacity:1;transform:translateY(0)}
+.panel{background:#fff;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.07);margin-bottom:20px}
 .pad{padding:var(--panelpad)}
 .title{text-align:center;font-weight:700;font-size:32px;margin:12px 0 24px}
 .subtitle{text-align:center;color:var(--muted);margin:-10px 0 24px}
@@ -191,17 +190,4 @@ details.privacy-accordion[open] > summary::before { content:"▼"; }
 .tab-contents{margin-bottom:24px}
 
 
-/* 기본은 숨김(아래→위) */
-[data-reveal]{
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);
-  will-change: opacity, transform;
-}
-[data-reveal].is-revealed{
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce){
-  [data-reveal]{ transition: none; transform: none; opacity: 1; }
-}
+/* 스크롤 등장 애니메이션 제거됨 — 모든 섹션이 처음부터 바로 보입니다 */
